@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import {nanoid} from "nanoid"
+import './style.css';
+import NewWorkout from "./Components/NewWorkout";
 
-function App() {
+export default function App() {
+    const [workout, setWorkout] = React.useState({})
+    const [currentWorkoutId, setCurrentWorkoutId] = React.useState(
+      (workout[0] && workout[0].id) || ""
+    )
+
+    function createNewWorkout() {
+      const newWorkout = {
+        id: nanoid(),
+        exercise: "reps"
+      }
+      setWorkout(prevWorkout => [newWorkout, ...prevWorkout])
+      setCurrentWorkoutId(newWorkout.id)
+    }
+
+
+   
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+                  <h1>SaraCode-CHansen Weightlifting App</h1>
+            <form>
+                <button className="button" onClick={createNewWorkout}>Start new workout</button>
+            </form>
+            <br />
+            <NewWorkout />
+
     </div>
   );
 }
-
-export default App;
