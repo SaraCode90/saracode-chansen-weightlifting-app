@@ -35,7 +35,8 @@ export default function NewWorkout() {
                 onChange={handleChange}
                 name="exercise"
             >
-                <option value="Squat">Squat</option>
+                <option  value="---">---</option>
+                <option  value="Squat">Squat</option>
                 <option value="Deadlift">Deadlift</option>
                 <option value="Clean">Clean</option>
                 <option value="Snatch">Snatch</option>
