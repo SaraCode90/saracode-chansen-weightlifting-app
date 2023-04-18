@@ -13,6 +13,11 @@ input[type="text"] {
   border-radius: 0.25rem;
   display: block;
 }
+
+li {
+  list-style-type: none 
+}
+
 h1 {
   justify-content: center;
   position: center;

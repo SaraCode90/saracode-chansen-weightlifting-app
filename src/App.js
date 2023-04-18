@@ -1,11 +1,13 @@
 import React from "react"
-import {nanoid} from "nanoid"
 import './style.css';
 import Navbar from "./Navbar"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./Pages/Home"
 import Signup from "./Pages/Signup"
 import Layout from "./Pages/Layout"
+import NewWorkout from "./Pages/NewWorkout"
+import NewTemplate from "./Pages/NewTemplate";
+import History from "./Pages/History";
 
 export default function App() {
   return (
@@ -15,6 +17,9 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="Signup" element={<Signup />} />
+          <Route path="newworkout" element={<NewWorkout />} />
+          <Route path="newtemplate" element={<NewTemplate />} />
+          <Route path="history" element={<History />} />
         </Route>
       </Routes>
   </BrowserRouter>
@@ -23,11 +28,6 @@ export default function App() {
   );
 }
 
-/**                  <h1>SaraCode-CHansen Weightlifting App</h1>
-            <form>
-                <button className="button" onClick={createNewWorkout}>Start new workout</button>
-            </form>
-            <br /> */
 
 
             /**    const [workout, setWorkout] = React.useState({})
@@ -35,11 +35,7 @@ export default function App() {
       (workout[0] && workout[0].id) || ""
     )
 
-    function createNewWorkout() {
-      const newWorkout = {
-        id: nanoid(),
-        exercise: "reps"
-      }
+    
       setWorkout(prevWorkout => [newWorkout, ...prevWorkout])
       setCurrentWorkoutId(newWorkout.id)
     } */

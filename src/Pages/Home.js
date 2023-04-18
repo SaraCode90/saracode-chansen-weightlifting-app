@@ -1,5 +1,7 @@
 import React from 'react';
 import {nanoid} from "nanoid"
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
 
 export default function Home() {
 
@@ -11,11 +13,17 @@ export default function Home() {
 
     return (
         <main>
-        <h1>SaraCode-CHansen Weightlifting App</h1>
+        <h3>Welcome!</h3>
         <form>
-            <button className="button" onClick={createNewWorkout}>Start new workout</button>
-            <button className="button" onClick={createNewWorkout}>Make template</button>
-            <button className="button" onClick={createNewWorkout}>See old workout</button>
+            <Link to="/newworkout">
+                <button className="button">Start new workout</button>
+            </Link>
+            <Link to="/newtemplate">
+                <button className="button">Make template</button>
+            </Link>
+            <Link to="/history">
+                <button className="button">See old workout</button>
+            </Link>
         </form>
         <br />
         </main>
