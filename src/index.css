@@ -8,7 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-button {
+largeButton {
   background-color: rgba(113, 162, 146, 0.822);
   padding: 0.5rem 1rem;
   margin: 1rem;
