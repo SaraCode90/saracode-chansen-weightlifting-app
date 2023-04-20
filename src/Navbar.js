@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -18,3 +18,12 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+<style>
+  {`
+  li {
+    list-style-type: none 
+  }
+  
+  `}
+</style>

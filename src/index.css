@@ -6,9 +6,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 2rem;
+    align-items: center;
 }
 
-largeButton {
+.largeButton {
   background-color: rgba(113, 162, 146, 0.822);
   padding: 0.5rem 1rem;
   margin: 1rem;

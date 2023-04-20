@@ -1,18 +1,18 @@
 import React from 'react';
-import "../style.css"
-import {nanoid} from "nanoid"
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+// import {nanoid} from "nanoid"
+import { Link } from 'react-router-dom';
 
 
 export default function Home() {
 
-    function createNewWorkout() {
-        const newWorkout = {
-          id: nanoid(),
-          exercise: "reps"
-        }}
+    // function createNewWorkout() {
+    //     const newWorkout = {
+    //       id: nanoid(),
+    //       exercise: "reps"
+    //     }}
 
     return (
+        <>
         <main>
         <h3>Welcome!</h3>
         <form>
@@ -28,5 +28,20 @@ export default function Home() {
         </form>
         <br />
         </main>
-    )
+
+
+<style>
+    {`      
+button {
+    background-color: rgba(113, 162, 146, 0.822);
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    border-radius: 0.25rem;
+    border: 0.1rem solid black;
+    box-shadow: rgba(153, 151, 151, 0.703) 0.1rem 0.1rem;
+  }
+    `}
+</style>
+</>
+)
 }

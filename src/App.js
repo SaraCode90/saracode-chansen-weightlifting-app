@@ -1,6 +1,4 @@
 import React from "react"
-import './style.css';
-import Navbar from "./Navbar"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./Pages/Home"
 import Signup from "./Pages/Signup"
@@ -23,7 +21,6 @@ export default function App() {
         </Route>
       </Routes>
   </BrowserRouter>
-
     </div>
   );
 }
@@ -39,3 +36,5 @@ export default function App() {
       setWorkout(prevWorkout => [newWorkout, ...prevWorkout])
       setCurrentWorkoutId(newWorkout.id)
     } */
+
+
