@@ -1,5 +1,6 @@
 import React from "react"
 import Counter from "../Components/Counter"
+import Timer from "../Components/Timer"
 
 
 export default function NewWorkout() {
@@ -45,31 +46,22 @@ export default function NewWorkout() {
             <br />
             <br />
             <br />
-
-            {/* <div>
-            <input
-                className="textInput"
-                type="text"
-                placeholder="Reps"
-                onChange={handleChange}
-                name="reps"
-                value={newWorkoutData.reps}
-            />
-            </div> */}
-            <div className="exercise--input">
+            <div className="exercise--container">
+              <button className="exercise--selected"> Squat </button>
             <div className="exercise--div">
-            <button className="exercise--selected"> Squat </button>
-            <div>
                 <label>Reps</label>
-            </div>
-            <div className="exercise--counter">
-            <Counter number={newWorkoutData.reps}/>
-            </div>
+                <Counter number={newWorkoutData.reps}/>
             </div>
             <div className="exercise--div">
-            <label>Weight</label>
-            <Counter number={newWorkoutData.weight} value={newWorkoutData.weight} onChange={handleChange}/>
+                <label>Weight</label>
+                <Counter number={newWorkoutData.weight} value={newWorkoutData.weight} onChange={handleChange} name="weight"/>
             </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div className="timer--container">
+              <Timer />
             </div>
             <br />
             <div className="save-button-div">
@@ -141,22 +133,24 @@ export default function NewWorkout() {
     // align-items: center;
     text-align:center;display:inline-block; margin:10px;}
 
-  .exercise--input {
-    justify-content: center;
-    background-color: blue;
+  .exercise--container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: left;
   }
 
   .exercise--selected {
     background-color: rgba(113, 162, 146, 0.822);
     padding: 0.25rem 0.5rem;
-    margin: 0.5rem;
+    margin: 2.2rem;
     border-radius: 0.25rem;
     border: 0.07rem solid black;
     box-shadow: rgba(153, 151, 151, 0.703) 0.1rem 0.1rem;
     font-size: 0.7rem;
     color: black;
     width: 3.2rem;
-    justify-content: center;
+    display: block;
   }
 
   .exercise--counter {
