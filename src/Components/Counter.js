@@ -37,7 +37,7 @@ export default function Counter() {
          cursor: pointer;
          background-color: #737373;
          color: #D9D9D9;
-         font-size: 1.5rem;
+         font-size: 1.2rem;
        }
        
        button:hover {
@@ -51,13 +51,14 @@ export default function Counter() {
        
        .counter--count {
          background-color: white;
-         height: 70px;
+         height: 40px;
          width: 70px;
          border-radius: 15%;
          display: flex;
          justify-content: center;
          align-items: center;
          color: #262626;
+         font-size: 0.8rem;
        }
        
        .counter--plus {
