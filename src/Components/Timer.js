@@ -1,45 +1,66 @@
 import React from "react"
+import Clock from "./Clock"
+import ControlButtons from "./ControlButtons";
 
 export default function Timer() {
-    const [days, setDays] = React.useState(0);
-    const [hours, setHours] = React.useState(0);
-    const [minutes, setMinutes] = React.useState(0);
-    const [seconds, setSeconds] = React.useState(0);
-
-    const deadline = "December 31, 2023";
-
-    const getTime = () => {
-        const time = Date.parse(deadline) - Date.now();
-
-        setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
-        setHours(Math.floor((time / 1000 * 60 * 60) % 24));
-        setMinutes(Math.floor((time / 1000 / 60) % 60));
-        setSeconds(Math.floor((time / 1000) % 60));
-    }
+    const [isActive, setIsActive] = React.useState(false);
+    const [isPaused, setIsPaused] = React.useState(true);
+    const [time, setTime] = React.useState(0);
 
     React.useEffect(() => {
-        const interval = setInterval(() => getTime(deadline), 1000);
+        let interval = null;
 
-        return () => clearInterval(interval);
-    }, []);
+        if (isActive && isPaused === false) {
+            interval = setInterval(() => {
+                setTime((time) => time + 10);
+            }, 10);
+        } else {
+            clearInterval(interval);
+        }
+        return () => {
+            clearInterval(interval);
+        };
+    }, [isActive, isPaused]);
+
+    const handleStart = () => {
+        setIsActive(true);
+        setIsPaused(false);
+    };
+
+    const handlePauseResume = () => {
+        setIsPaused(!isPaused);
+    };
+
+    const handleReset = () => {
+        setIsActive(false);
+        setTime(0);
+    };
 
     return (
         <>
 
     <div className="timer">
-        Day: {days} 
-        <br />
-        Hour: {hours} 
-        <br />
-        Minutes: {minutes} 
-        <br />
-        Seconds: {seconds}
+        <Clock time={time} />
+        <ControlButtons
+            active={isActive}
+            isPaused={isPaused}
+            handleStart={handleStart}
+            handlePauseResume={handlePauseResume}
+            handleReset={handleReset}
+            />
     </div>
 
     <style>
     {`
         .timer {
+            height: 3rem;
+            weidth: 1rem;
             color: green;
+            background-color: "#0d0c1b";
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
         }
     `}
     </style>

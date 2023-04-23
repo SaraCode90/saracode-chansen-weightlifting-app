@@ -64,6 +64,11 @@ export default function NewWorkout() {
               <Timer />
             </div>
             <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <div className="save-button-div">
             <button className="button--save">Save</button>
             </div>

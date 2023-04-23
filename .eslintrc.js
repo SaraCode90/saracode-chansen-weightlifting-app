@@ -18,5 +18,6 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "react/prop-types": "off" /* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling 
     }
 }
