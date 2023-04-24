@@ -42,71 +42,12 @@ export default function NewWorkout() {
     return (
         <>
         <form onSubmit={e=>e.preventDefault()}>
-            <label htmlFor="exercise">Select exercise</label>
-            <br />
-            <div className="exercise--buttons">
-
-            <button className="exerciseSelector" > Deadlift </button>
-            <button className="exerciseSelector" > Press </button>
-            <button className="exerciseSelector" > Bench </button>
-            <button className="exerciseSelector" > Clean </button>
-            <button className="exerciseSelector" > Snatch </button>
-            <button className="exerciseSelector" > Row </button>
-            <button className="exerciseSelector" > More... </button>
-            </div>
-            <br />
-            <br />
+        <label htmlFor="exercise">Select exercise</label>
             <ExerciseOptions 
-              newWorkoutData={newWorkoutData} 
+              newWorkoutData={newWorkoutData}
               handleChange={handleChange} 
               selectExercise={selectExercise}
             />
-            <br />
-            <br />
-            <label className="radio-label" htmlFor="squat">
-            <input 
-              type="radio" 
-              id="squat" 
-              name="exercise" 
-              value="squat" 
-              checked={newWorkoutData.exercise === "squat"} 
-              onChange={handleChange} 
-              className="check-btn" 
-              onClick={selectExercise}
-              />
-              {" "}
-              <span className="text-inner">squat</span>
-            </label>{" "}
-
-            <label className="radio-label" htmlFor="deadlift">
-              <input 
-              type="radio" 
-              id="deadlift" 
-              name="exercise" 
-              value="deadlift" 
-              checked={newWorkoutData.exercise === "deadlift"} 
-              onChange={handleChange} 
-              className="check-btn" 
-              onClick={selectExercise}
-              />
-              {" "}
-              <span className="text-inner">deadlift</span>
-            </label>{" "}
-
-            <label className="radio-label" htmlFor="bench">
-              <input 
-              type="radio" 
-              id="bench" 
-              name="exercise" 
-              value="bench" 
-              checked={newWorkoutData.exercise === "bench"} 
-              onChange={handleChange} 
-              className="check-btn" 
-              onClick={selectExercise}
-              />
-              {" "}
-              <span className="text-inner">bench</span>
-              </label>{" "}
             <br />
             <br />
             <div className="exercise--container">
@@ -145,42 +86,6 @@ export default function NewWorkout() {
 <style>
     {`
 
-    .check-btn {
-      opacity: 0;
-      position: relative;
-      top: 2px;
-    }
-
-    .radio-label {
-      border-radius: 10px;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 12px;
-      line-heigh: 12px;
-      text-align: center;
-      width: 100%;
-      transition: 0.3s ease;
-
-      background: blue;
-      border: 0.8px solid white;
-      box-sizing: border-box;
-      border-radius: 8px;
-
-      padding-top: 5px;
-      padding-bottom: 5px;
-      padding; 5px 10px 5px 10px;
-
-    }
-
-    .radio-label:hover {
-      background-color: #d6dbf5;
-      cursor: pointer;
-    }
-
-    .text-inner {
-      position: relative;
-      right: 10px;
-    }
 
     .button--save {
       width: 3rem;

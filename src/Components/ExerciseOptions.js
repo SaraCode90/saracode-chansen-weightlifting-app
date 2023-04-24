@@ -5,8 +5,9 @@ export default function ExerciseOptions(props) {
     return data.map((x) => {
         return (
             <>
-            <div>
-            <label className="radio-labale" htmlFor={x}>
+            <div className="exercise--buttons">
+                
+            <label className="radio-label" htmlFor={x}>
               <input
                 type="radio"
                 name="exercise"
@@ -16,14 +17,23 @@ export default function ExerciseOptions(props) {
                 checked={props.newWorkoutData.exercise === "{x}"} 
                 onChange={props.handleChange} 
                 onClick={props.selectExercise}
-              />{" "}
+              />
               <span className="text-inner">{x}</span>
-            </label>{" "}
-            &nbsp; &nbsp;
+            </label>
             </div>
 
 <style>
     {`
+.exercise--buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    gap: 0.1rem;
+    overflow: hidden;
+  }
+
     .check-btn {
       opacity: 0;
       position: relative;
@@ -31,35 +41,40 @@ export default function ExerciseOptions(props) {
     }
 
     .radio-label {
-      border-radius: 10px;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 12px;
-      line-heigh: 12px;
-      text-align: center;
-      width: 100%;
-      transition: 0.3s ease;
+      background-color: rgba(113, 162, 146, 0.822);
+      padding: 0.25rem;
+      margin: 0.5rem;
+      border-radius: 0.25rem;
+      border: 0.07rem solid black;
+      box-shadow: rgba(153, 151, 151, 0.703) 0.1rem 0.1rem;
+      cursor: pointer;
+      font-size: 0.7rem;
+      color: black;
 
-      background: blue;
-      border: 0.8px solid white;
-      box-sizing: border-box;
-      border-radius: 8px;
-
-      padding-top: 5px;
-      padding-bottom: 5px;
-      padding; 5px 10px 5px 10px;
-
+      display: block;
+      align-items: center;
+      justify-content: center;
+      
     }
 
     .radio-label:hover {
-      background-color: #d6dbf5;
+        background-color: #000000;
+        color: #D9D9D9;
       cursor: pointer;
     }
 
+    .radio-label > button:focus {
+        outline: none;
+      }
+
     .text-inner {
-      position: relative;
-      right: 10px;
+        position: relative;
+        right: 10px;
     }
+      
+
+  
+      
 `}
 </style>
 </>
