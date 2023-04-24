@@ -1,14 +1,17 @@
 import React from "react"
 import Counter from "../Components/Counter"
 import Timer from "../Components/Timer"
+import ExerciseOptions from "../Components/ExerciseOptions"
 
 
 export default function NewWorkout() {
     const [newWorkoutData, setNewWorkoutData] = React.useState(
         {
             exercise: "",
+            sets: "",
             reps: "",
             weight: "",
+            Rest: "",
         }
     )
     function handleChange(event) {
@@ -21,19 +24,28 @@ export default function NewWorkout() {
             }
         })
     }
-     function handleSubmit() {
-        /** submitToApi(newWorkoutData) */
-        console.log(newWorkoutData)
+    function selectExercise(event) {
+      const {name, value} = event.target
+      setNewWorkoutData(prevWorkoutData => {
+        return {
+          ...prevWorkoutData,
+          [name]: value
+        }
+      })
     }
+    //  function handleSubmit() {
+    //     /** submitToApi(newWorkoutData) */
+    //     console.log(newWorkoutData)
+    // }
 
 
     return (
         <>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={e=>e.preventDefault()}>
             <label htmlFor="exercise">Select exercise</label>
             <br />
             <div className="exercise--buttons">
-            <button className="exerciseSelector" > Squat </button>
+
             <button className="exerciseSelector" > Deadlift </button>
             <button className="exerciseSelector" > Press </button>
             <button className="exerciseSelector" > Bench </button>
@@ -44,10 +56,65 @@ export default function NewWorkout() {
             </div>
             <br />
             <br />
+            <ExerciseOptions 
+              newWorkoutData={newWorkoutData} 
+              handleChange={handleChange} 
+              selectExercise={selectExercise}
+            />
+            <br />
+            <br />
+            <label className="radio-label" htmlFor="squat">
+            <input 
+              type="radio" 
+              id="squat" 
+              name="exercise" 
+              value="squat" 
+              checked={newWorkoutData.exercise === "squat"} 
+              onChange={handleChange} 
+              className="check-btn" 
+              onClick={selectExercise}
+              />
+              {" "}
+              <span className="text-inner">squat</span>
+            </label>{" "}
+
+            <label className="radio-label" htmlFor="deadlift">
+              <input 
+              type="radio" 
+              id="deadlift" 
+              name="exercise" 
+              value="deadlift" 
+              checked={newWorkoutData.exercise === "deadlift"} 
+              onChange={handleChange} 
+              className="check-btn" 
+              onClick={selectExercise}
+              />
+              {" "}
+              <span className="text-inner">deadlift</span>
+            </label>{" "}
+
+            <label className="radio-label" htmlFor="bench">
+              <input 
+              type="radio" 
+              id="bench" 
+              name="exercise" 
+              value="bench" 
+              checked={newWorkoutData.exercise === "bench"} 
+              onChange={handleChange} 
+              className="check-btn" 
+              onClick={selectExercise}
+              />
+              {" "}
+              <span className="text-inner">bench</span>
+              </label>{" "}
             <br />
             <br />
             <div className="exercise--container">
               <button className="exercise--selected"> Squat </button>
+            <div className="exercise--div">
+                <label>Sets</label>
+                <Counter number={newWorkoutData.sets}/>
+            </div>
             <div className="exercise--div">
                 <label>Reps</label>
                 <Counter number={newWorkoutData.reps}/>
@@ -56,13 +123,14 @@ export default function NewWorkout() {
                 <label>Weight</label>
                 <Counter number={newWorkoutData.weight} value={newWorkoutData.weight} onChange={handleChange} name="weight"/>
             </div>
+            <div className="exercise--div">
+                <label>Rest</label>
+                <Timer />
+            </div>
             </div>
             <br />
             <br />
             <br />
-            <div className="timer--container">
-              <Timer />
-            </div>
             <br />
             <br />
             <br />
@@ -76,6 +144,43 @@ export default function NewWorkout() {
 
 <style>
     {`
+
+    .check-btn {
+      opacity: 0;
+      position: relative;
+      top: 2px;
+    }
+
+    .radio-label {
+      border-radius: 10px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-heigh: 12px;
+      text-align: center;
+      width: 100%;
+      transition: 0.3s ease;
+
+      background: blue;
+      border: 0.8px solid white;
+      box-sizing: border-box;
+      border-radius: 8px;
+
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding; 5px 10px 5px 10px;
+
+    }
+
+    .radio-label:hover {
+      background-color: #d6dbf5;
+      cursor: pointer;
+    }
+
+    .text-inner {
+      position: relative;
+      right: 10px;
+    }
 
     .button--save {
       width: 3rem;
@@ -136,13 +241,17 @@ export default function NewWorkout() {
     // justify-content: center;
     // flex-direction: row;
     // align-items: center;
-    text-align:center;display:inline-block; margin:10px;}
+    text-align:center;
+    display:inline-block; 
+    margin:10px;
+  }
 
   .exercise--container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: left;
+    flex-wrap: wrap;
   }
 
   .exercise--selected {
@@ -158,9 +267,6 @@ export default function NewWorkout() {
     display: block;
   }
 
-  .exercise--counter {
-
-  }
 
     `}
 </style>

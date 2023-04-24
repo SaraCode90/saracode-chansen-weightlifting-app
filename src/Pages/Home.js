@@ -39,6 +39,7 @@ button {
     border-radius: 0.25rem;
     border: 0.1rem solid black;
     box-shadow: rgba(153, 151, 151, 0.703) 0.1rem 0.1rem;
+    cursor: pointer;
   }
     `}
 </style>
