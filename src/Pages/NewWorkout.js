@@ -2,7 +2,7 @@ import React from "react"
 import Counter from "../Components/Counter"
 import Timer from "../Components/Timer"
 import ExerciseOptions from "../Components/ExerciseOptions"
-
+import Save from "../Components/Save"
 
 export default function NewWorkout() {
     const [newWorkoutData, setNewWorkoutData] = React.useState(
@@ -11,11 +11,13 @@ export default function NewWorkout() {
             sets: "",
             reps: "",
             weight: "",
-            Rest: "",
+            rest: "",
         }
     )
+
+    console.log(newWorkoutData)
+
     function handleChange(event) {
-        console.log(event)
         const {name, value} = event.target
         setNewWorkoutData(prevWorkoutData => {
             return {
@@ -24,15 +26,7 @@ export default function NewWorkout() {
             }
         })
     }
-    function selectExercise(event) {
-      const {name, value} = event.target
-      setNewWorkoutData(prevWorkoutData => {
-        return {
-          ...prevWorkoutData,
-          [name]: value
-        }
-      })
-    }
+
     //  function handleSubmit() {
     //     /** submitToApi(newWorkoutData) */
     //     console.log(newWorkoutData)
@@ -46,32 +40,48 @@ export default function NewWorkout() {
             <ExerciseOptions 
               newWorkoutData={newWorkoutData}
               handleChange={handleChange} 
-              selectExercise={selectExercise}
             />
             <br />
             <br />
             <div className="exercise--container">
-              <button className="exercise--selected"> Squat </button>
+              <button className="exercise--selected"> {newWorkoutData.exercise} </button>
             <div className="exercise--div">
                 <label>Sets</label>
-                <Counter number={newWorkoutData.sets}/>
+                <Counter 
+                  setNewWorkoutData={setNewWorkoutData}
+                  newWorkoutData={newWorkoutData}
+                  name="sets"
+                  value={newWorkoutData.sets}
+                />
             </div>
             <div className="exercise--div">
                 <label>Reps</label>
-                <Counter number={newWorkoutData.reps}/>
+                <Counter 
+                  setNewWorkoutData={setNewWorkoutData}
+                  newWorkoutData={newWorkoutData}
+                  handleChange={handleChange}
+                  name="reps"
+                  value={newWorkoutData.reps}
+                />
             </div>
             <div className="exercise--div">
                 <label>Weight</label>
-                <Counter number={newWorkoutData.weight} value={newWorkoutData.weight} onChange={handleChange} name="weight"/>
+                <Counter 
+                  setNewWorkoutData={setNewWorkoutData}
+                  newWorkoutData={newWorkoutData} 
+                  onChange={handleChange} 
+                  name="weight"
+                  value={newWorkoutData.weight}
+                  />
             </div>
             <div className="exercise--div">
                 <label>Rest</label>
                 <Timer />
             </div>
+            <Save
+              handleChange={handleChange}
+            />
             </div>
-            <br />
-            <br />
-            <br />
             <br />
             <br />
             <br />
@@ -85,8 +95,6 @@ export default function NewWorkout() {
 
 <style>
     {`
-
-
     .button--save {
       width: 3rem;
       font-size: 1rem;

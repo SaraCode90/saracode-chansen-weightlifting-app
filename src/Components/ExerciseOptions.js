@@ -16,7 +16,6 @@ export default function ExerciseOptions(props) {
                 className="check-btn"
                 checked={props.newWorkoutData.exercise === "{x}"} 
                 onChange={props.handleChange} 
-                onClick={props.selectExercise}
               />
               <span className="text-inner">{x}</span>
             </label>
