@@ -1,30 +1,51 @@
 import React from "react"
 
 export default function Counter(props) {
-    const [count, setCount] = React.useState(0)
-    
-    function add() {
-        setCount(prevCount => prevCount + 1)
-        props.setNewWorkoutData(prevWorkoutData => {
-          return {
-            ...prevWorkoutData,
-            [props.newWorkoutData.value]: {count}
-          }
-        })
-    }
-  
-    function subtract() {
-        setCount(prevCount => prevCount - 1)
-    }
+  const [count, setCount] = React.useState(0)
+
+  function handleClick() {
+    const newCount = count + 1
+    setCount(newCount)
+    props.onCounterChange(newCount)
+
+
+
+
+    // props.setState(prevWorkoutData => {
+    //   return {
+    //     ...prevWorkoutData,
+    //     [props.state]: prevWorkoutData
+    //   }
+    // })
+  }
+    // function add() {
+    //     props.setCount(prevCount => {
+    //       const newCount = Number(prevCount) + 1
+    //       return newCount
+    //     })
+
+    //   }
+
+    // function subtract() {
+    //     props.setCount(prevCount => prevCount - 1)
+    // }
+
 
     return (
         <>
         <div className="counter">
-            <button className="counter--minus" onClick={subtract} onChange={props.handleChange}>–</button>
+            <button 
+              className="counter--minus" 
+              onClick={handleClick} >–</button>
             <div className="counter--count">
                 <h1>{count}</h1>
             </div>
-            <button className="counter--plus" onClick={add}>+</button>
+            <button 
+              className="counter--plus" 
+              onClick={handleClick} 
+            >
+              +
+            </button>
                 </div>
 
 <style>

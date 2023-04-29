@@ -8,12 +8,11 @@ export default function NewWorkout() {
     const [newWorkoutData, setNewWorkoutData] = React.useState(
         {
             exercise: "",
-            sets: "",
-            reps: "",
-            weight: "",
-            rest: "",
+            sets: null,
         }
     )
+
+    const [counterValue, setCounterValue] = React.useState(0)
 
     console.log(newWorkoutData)
 
@@ -27,11 +26,15 @@ export default function NewWorkout() {
         })
     }
 
-    //  function handleSubmit() {
-    //     /** submitToApi(newWorkoutData) */
-    //     console.log(newWorkoutData)
-    // }
-
+    function handleCounterChange(newValue) {
+      setCounterValue(newValue)
+      setNewWorkoutData(prevWorkoutData => {
+        return {
+          ...prevWorkoutData,
+          sets: newValue
+        }
+      })
+    }
 
     return (
         <>
@@ -42,38 +45,15 @@ export default function NewWorkout() {
               handleChange={handleChange} 
             />
             <br />
-            <br />
             <div className="exercise--container">
               <button className="exercise--selected"> {newWorkoutData.exercise} </button>
             <div className="exercise--div">
                 <label>Sets</label>
                 <Counter 
-                  setNewWorkoutData={setNewWorkoutData}
-                  newWorkoutData={newWorkoutData}
-                  name="sets"
-                  value={newWorkoutData.sets}
+                  onCounterChange={handleCounterChange}
                 />
             </div>
-            <div className="exercise--div">
-                <label>Reps</label>
-                <Counter 
-                  setNewWorkoutData={setNewWorkoutData}
-                  newWorkoutData={newWorkoutData}
-                  handleChange={handleChange}
-                  name="reps"
-                  value={newWorkoutData.reps}
-                />
-            </div>
-            <div className="exercise--div">
-                <label>Weight</label>
-                <Counter 
-                  setNewWorkoutData={setNewWorkoutData}
-                  newWorkoutData={newWorkoutData} 
-                  onChange={handleChange} 
-                  name="weight"
-                  value={newWorkoutData.weight}
-                  />
-            </div>
+            <div> {counterValue}</div>
             <div className="exercise--div">
                 <label>Rest</label>
                 <Timer />

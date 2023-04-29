@@ -21,6 +21,8 @@ export default function ExerciseOptions(props) {
             </label>
             </div>
 
+
+
 <style>
     {`
 .exercise--buttons {
