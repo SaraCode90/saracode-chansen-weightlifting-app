@@ -1,33 +1,37 @@
-import React from "react"
+import React from 'react';
 
 export default function Counter(props) {
-  const [count, setCount] = React.useState(0)
+  const [count, setCount] = React.useState(0);
 
   function handleClick() {
-    const newCount = count + 1
-    setCount(newCount)
-    props.onCounterChange(newCount)
+    const newCount = count + 1;
+    setCount(newCount);
+    props.onCounterChange(newCount);
   }
 
-    return (
-        <>
-        <div className="counter">
-            <button 
-              className="counter--minus" 
-              onClick={handleClick} >–</button>
-            <div className="counter--count">
-                <h1>{count}</h1>
-            </div>
-            <button 
-              className="counter--plus" 
-              onClick={handleClick} 
-            >
-              +
-            </button>
-                </div>
+  return (
+    <>
+      <div className="counter">
+        <button
+          className="counter--minus"
+          onClick={handleClick}
+        >
+          –
 
-<style>
-    {`
+        </button>
+        <div className="counter--count">
+          <h1>{count}</h1>
+        </div>
+        <button
+          className="counter--plus"
+          onClick={handleClick}
+        >
+          +
+        </button>
+      </div>
+
+      <style>
+        {`
        .counter {
          display: flex;
          align-items: flex-end;
@@ -75,8 +79,8 @@ export default function Counter(props) {
        }
         
     `}
-</style>
+      </style>
 
-</>
-)
+    </>
+  );
 }

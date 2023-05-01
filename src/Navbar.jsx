@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-const Navbar = () => {
+function Navbar() {
   return (
     <nav>
-        <ul>
+      <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -19,11 +18,11 @@ const Navbar = () => {
 
 export default Navbar;
 
-<style>
-  {`
+  <style>
+    {`
   li {
     list-style-type: none 
   }
   
   `}
-</style>
+  </style>;

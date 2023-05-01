@@ -1,30 +1,27 @@
-import React from "react"
-import data from "../data"
+import React from 'react';
+import data from '../data';
 
 export default function ExerciseOptions(props) {
-    return data.map((x) => {
-        return (
-            <>
-            <div className="exercise--buttons">
-                
-            <label className="radio-label" htmlFor={x}>
-              <input
-                type="radio"
-                name="exercise"
-                id={x}
-                value={x}
-                className="check-btn"
-                checked={props.newWorkoutData.exercise === "{x}"} 
-                onChange={props.handleChange} 
-              />
-              <span className="text-inner">{x}</span>
-            </label>
-            </div>
+  return data.map((x) => (
+    <>
+      <div className="exercise--buttons">
 
+        <label className="radio-label" htmlFor={x}>
+          <input
+            type="radio"
+            name="exercise"
+            id={x}
+            value={x}
+            className="check-btn"
+            checked={props.newWorkoutData.exercise === '{x}'}
+            onChange={props.handleChange}
+          />
+          <span className="text-inner">{x}</span>
+        </label>
+      </div>
 
-
-<style>
-    {`
+      <style>
+        {`
 .exercise--buttons {
     display: flex;
     flex-direction: row;
@@ -77,9 +74,8 @@ export default function ExerciseOptions(props) {
   
       
 `}
-</style>
-</>
+      </style>
+    </>
 
-    )
+  ));
 }
-    ) }

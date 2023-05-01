@@ -1,33 +1,39 @@
-import React from "react"
+import React from 'react';
 
 export default function ControlButtons(props) {
-    const StartButton = (
-        <button className="btn btn-one btn-start"
-        onClick={props.handleStart}>
-            Start
-        </button>
-    );
-    const ActiveButtons = (
-        <div className="btn-grp">
-            <button className="btn btn-two"
-        onClick={props.handleReset}>
-            Reset
-        </button>
-        <button className="btn btn-one"
-        onClick={props.handlePauseResume}>
-            {props.isPaused ? "Resume" : "Pause"}
-        </button>
-        </div>
-    );
+  const StartButton = (
+    <button
+      className="btn btn-one btn-start"
+      onClick={props.handleStart}
+    >
+      Start
+    </button>
+  );
+  const ActiveButtons = (
+    <div className="btn-grp">
+      <button
+        className="btn btn-two"
+        onClick={props.handleReset}
+      >
+        Reset
+      </button>
+      <button
+        className="btn btn-one"
+        onClick={props.handlePauseResume}
+      >
+        {props.isPaused ? 'Resume' : 'Pause'}
+      </button>
+    </div>
+  );
 
-    return (
-        <>
-        <div className="Control-Buttons">
-            <div>{props.active ? ActiveButtons : StartButton}</div>
-        </div>
+  return (
+    <>
+      <div className="Control-Buttons">
+        <div>{props.active ? ActiveButtons : StartButton}</div>
+      </div>
 
-        <style>
-            {`
+      <style>
+        {`
             .Control-Buttons {
                 margin: 1rem 0;
                 width: 100%;
@@ -73,7 +79,7 @@ export default function ControlButtons(props) {
                 background-color: rgba(113, 162, 146, 0.822);
             }
             `}
-        </style>
-        </>
-    )
+      </style>
+    </>
+  );
 }

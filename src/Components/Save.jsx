@@ -1,22 +1,20 @@
-import React from "react"
+import React from 'react';
 
 export default function Save(props) {
+  console.log('Clicked');
+  return (
+    <>
+      <div>
+        <button
+          className="save-button"
+          onClick={props.handleChange}
+        >
+          Save
+        </button>
+      </div>
 
-    console.log("Clicked")
-    return(
-        <>
-        <div>
-            <button 
-                className="save-button"
-                onClick={props.handleChange}
-
-            >
-                Save
-            </button>
-        </div>
-
-        <style>
-            {`
+      <style>
+        {`
               .save-button {
                 background-color: rgba(113, 162, 146, 0.822);
                 padding: 0.25rem 0.5rem;
@@ -30,7 +28,7 @@ export default function Save(props) {
                 width: 3.2rem;
               }
             `}
-        </style>
-        </>
-    )
+      </style>
+    </>
+  );
 }
