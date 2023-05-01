@@ -7,29 +7,7 @@ export default function Counter(props) {
     const newCount = count + 1
     setCount(newCount)
     props.onCounterChange(newCount)
-
-
-
-
-    // props.setState(prevWorkoutData => {
-    //   return {
-    //     ...prevWorkoutData,
-    //     [props.state]: prevWorkoutData
-    //   }
-    // })
   }
-    // function add() {
-    //     props.setCount(prevCount => {
-    //       const newCount = Number(prevCount) + 1
-    //       return newCount
-    //     })
-
-    //   }
-
-    // function subtract() {
-    //     props.setCount(prevCount => prevCount - 1)
-    // }
-
 
     return (
         <>

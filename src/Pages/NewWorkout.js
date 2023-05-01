@@ -7,12 +7,12 @@ import Save from "../Components/Save"
 export default function NewWorkout() {
     const [newWorkoutData, setNewWorkoutData] = React.useState(
         {
-            exercise: "",
-            sets: null,
+          exercise: "",
+          sets: 0,
+          reps: 0,
+          weight: 0
         }
     )
-
-    const [counterValue, setCounterValue] = React.useState(0)
 
     console.log(newWorkoutData)
 
@@ -26,15 +26,14 @@ export default function NewWorkout() {
         })
     }
 
-    function handleCounterChange(newValue) {
-      setCounterValue(newValue)
+    function handleCounterChange(newValue, objKey) {
       setNewWorkoutData(prevWorkoutData => {
         return {
           ...prevWorkoutData,
-          sets: newValue
+          [objKey]: newValue
         }
-      })
-    }
+    })}
+
 
     return (
         <>
@@ -49,11 +48,19 @@ export default function NewWorkout() {
               <button className="exercise--selected"> {newWorkoutData.exercise} </button>
             <div className="exercise--div">
                 <label>Sets</label>
-                <Counter 
-                  onCounterChange={handleCounterChange}
+                <Counter
+                  key={2}
+                  id="sets"
+                  onCounterChange={cb => handleCounterChange(cb, 'sets')}
                 />
             </div>
-            <div> {counterValue}</div>
+            <div className="exercise--div">
+                <label>Reps</label>
+                <Counter
+                  key={1}
+                  onCounterChange={cb => handleCounterChange(cb, 'reps')}
+                />
+            </div>
             <div className="exercise--div">
                 <label>Rest</label>
                 <Timer />
