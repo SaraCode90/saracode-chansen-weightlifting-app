@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function ControlButtons(props) {
+export default function ControlButtons({
+  isPaused, active, start, handlePauseResume, reset,
+}) {
   const StartButton = (
     <button
+      type="button"
       className="btn btn-one btn-start"
-      onClick={props.handleStart}
+      onClick={start}
     >
       Start
     </button>
@@ -12,16 +16,18 @@ export default function ControlButtons(props) {
   const ActiveButtons = (
     <div className="btn-grp">
       <button
+        type="button"
         className="btn btn-two"
-        onClick={props.handleReset}
+        onClick={reset}
       >
         Reset
       </button>
       <button
+        type="button"
         className="btn btn-one"
-        onClick={props.handlePauseResume}
+        onClick={handlePauseResume}
       >
-        {props.isPaused ? 'Resume' : 'Pause'}
+        {isPaused ? 'Resume' : 'Pause'}
       </button>
     </div>
   );
@@ -29,7 +35,7 @@ export default function ControlButtons(props) {
   return (
     <>
       <div className="Control-Buttons">
-        <div>{props.active ? ActiveButtons : StartButton}</div>
+        <div>{active ? ActiveButtons : StartButton}</div>
       </div>
 
       <style>
@@ -83,3 +89,11 @@ export default function ControlButtons(props) {
     </>
   );
 }
+
+ControlButtons.propTypes = {
+  isPaused: PropTypes.number.isRequired,
+  active: PropTypes.bool.isRequired,
+  handlePauseResume: PropTypes.bool.isRequired,
+  start: PropTypes.bool.isRequired,
+  reset: PropTypes.bool.isRequired,
+};

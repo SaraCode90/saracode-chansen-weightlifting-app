@@ -15,13 +15,13 @@ export default function Home() {
         <h3>Welcome!</h3>
         <form>
           <Link to="/newworkout">
-            <button className="largeButton">Start new workout</button>
+            <button type="button" className="largeButton">Start new workout</button>
           </Link>
           <Link to="/newtemplate">
-            <button className="largeButton">Make template</button>
+            <button type="button" className="largeButton">Make template</button>
           </Link>
           <Link to="/history">
-            <button className="largeButton">See old workout</button>
+            <button type="button" className="largeButton">See old workout</button>
           </Link>
         </form>
         <br />

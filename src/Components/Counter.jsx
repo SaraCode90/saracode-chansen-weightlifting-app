@@ -1,18 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Counter(props) {
+export default function Counter({ onCounterChange }) {
   const [count, setCount] = React.useState(0);
 
   function handleClick() {
     const newCount = count + 1;
     setCount(newCount);
-    props.onCounterChange(newCount);
+    onCounterChange(newCount);
   }
 
   return (
     <>
       <div className="counter">
         <button
+          type="button"
           className="counter--minus"
           onClick={handleClick}
         >
@@ -23,6 +25,7 @@ export default function Counter(props) {
           <h1>{count}</h1>
         </div>
         <button
+          type="button"
           className="counter--plus"
           onClick={handleClick}
         >
@@ -84,3 +87,7 @@ export default function Counter(props) {
     </>
   );
 }
+
+Counter.propTypes = {
+  onCounterChange: PropTypes.func.isRequired,
+};

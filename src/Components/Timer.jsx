@@ -12,7 +12,7 @@ export default function Timer() {
 
     if (isActive && isPaused === false) {
       interval = setInterval(() => {
-        setTime((time) => time + 10);
+        setTime((t) => t + 10);
       }, 10);
     } else {
       clearInterval(interval);

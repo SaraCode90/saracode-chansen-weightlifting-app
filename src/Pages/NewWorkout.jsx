@@ -34,34 +34,34 @@ export default function NewWorkout() {
   return (
     <>
       <form onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="exercise">Select exercise</label>
+        <label htmlFor="select-exercise">Select exercise</label>
         <ExerciseOptions
           newWorkoutData={newWorkoutData}
           handleChange={handleChange}
         />
         <br />
         <div className="exercise--container">
-          <button className="exercise--selected">
+          <button type="button" className="exercise--selected">
             {' '}
             {newWorkoutData.exercise}
             {' '}
           </button>
           <div className="exercise--div">
-            <label>Sets</label>
+            <label htmlFor="sets-counter">Sets</label>
             <Counter
               key={1}
               onCounterChange={(cb) => handleCounterChange(cb, 'sets')}
             />
           </div>
           <div className="exercise--div">
-            <label>Reps</label>
+            <label htmlFor="reps-counter">Reps</label>
             <Counter
               key={2}
               onCounterChange={(cb) => handleCounterChange(cb, 'reps')}
             />
           </div>
           <div className="exercise--div">
-            <label>Rest</label>
+            <label htmlFor="rest-timer">Rest</label>
             <Timer />
           </div>
           <Save
@@ -75,7 +75,7 @@ export default function NewWorkout() {
         <br />
         <br />
         <div className="save-button-div">
-          <button className="button--save">Save</button>
+          <button type="button" className="button--save">Save</button>
         </div>
       </form>
 

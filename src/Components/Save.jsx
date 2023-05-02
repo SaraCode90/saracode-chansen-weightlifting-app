@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Save(props) {
+export default function Save({ handleChange }) {
   console.log('Clicked');
   return (
     <>
       <div>
         <button
+          type="button"
           className="save-button"
-          onClick={props.handleChange}
+          onClick={handleChange}
         >
           Save
         </button>
@@ -32,3 +34,7 @@ export default function Save(props) {
     </>
   );
 }
+
+Save.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+};
